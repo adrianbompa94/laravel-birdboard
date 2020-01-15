@@ -16,7 +16,17 @@
         <div class="lg:w-3/4 px-3">
             <div class="mb-8">
                 <h2 class="text-lg text-gray-600 font-normal">Tasks</h2>
-                <div class="card">Lorem ipsum.</div>
+                
+                @foreach ($project->tasks as $task)
+                    <div class="card mb-3">{{ $task->body }}</div>
+                @endforeach
+                <div class="card mb-3">
+                    <form action="{{ $project->path() . '/tasks' }}" method="POST">
+                        @csrf
+                        
+                    </form>
+                    <input type="text" placeholder="Begin adding tasks..." class="w-full" name="body">
+                </div>
             </div>  
             
             <div>
